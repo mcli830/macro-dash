@@ -1,6 +1,6 @@
 import React from 'react';
 import connectGoogleAPI from './api/connectGoogleAPI';
-import Spinner from './components/spinner';
+import Navbar from './components/navbar';
 
 /*
     App will receive the gapi prop with the following keys:
@@ -21,7 +21,7 @@ function App(props) {
     response: null,
   })
 
-  const getSampleData = () => {
+  const getSample = () => {
     // handle incomplete load
     if (!client) return null;
     // get sample spreadsheet data
@@ -44,37 +44,16 @@ function App(props) {
 
   return (
     <div className="App">
-      <nav className="navbar">
-        <div className="navbar-brand">
-          Macro Dash
-        </div>
-        {loading ? <Spinner /> : (
-          <div className="d-inline-flex align-items-center">
-            <button
-              className="btn btn-outline-success"
-              onClick={getSampleData}
-            >
-              Get Sample Data
-            </button>
-            <div className="mx-3">
-              <span> Status: </span>
-              <span className={`badge badge-${isSignedIn ? 'success' : 'light'}`}>
-                {isSignedIn ? 'ONLINE' : 'OFFLINE'}
-              </span>
-            </div>
-            <button
-              className={`btn btn-${isSignedIn ? 'outline-' : ''}primary`}
-              onClick={isSignedIn ? auth.signOut : auth.signIn}
-            >
-              {isSignedIn ? 'Sign Out' : 'Login'}
-            </button>
-          </div>
-        )}
-      </nav>
+      <Navbar {...props} getSample={getSample} />
       <main>
         <div className="jumbotron">
           <h2 className="display-4">Main</h2>
-          <p>This is the main content</p>
+          <button
+            className="btn btn-outline-success"
+            onClick={getSample}
+          >
+            Get Sample Data
+          </button>
           <hr className="my-4" />
           <p>App props:</p>
           <pre className="alert alert-dark my-1">
