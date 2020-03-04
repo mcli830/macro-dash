@@ -12,6 +12,7 @@ function connectGoogleAPI(Component, options = {}) {
         loading: true,
         error: false,
         auth: null,
+        client: null,
         isSignedIn: false,
       };
       // bind handlers for async operations
@@ -40,6 +41,7 @@ function connectGoogleAPI(Component, options = {}) {
         this.setState({
           loading: false,
           auth,
+          client: window.gapi.client,
           isSignedIn: auth.isSignedIn.get(),
         });
       }, function(error) {

@@ -5,10 +5,11 @@ import Spinner from './components/spinner';
 /*
     App will receive the gapi prop with the following keys:
     {
-      isSignedIn: bool,
-      loading: bool,
-      error: Error Object || null,
+      isSignedIn: bool
+      loading: bool
+      error: Error Object || null
       auth: gapi.auth2 instance
+      client: gapi.client
     }
 */
 
