@@ -51,7 +51,11 @@ function connectGoogleAPI(Component, options = {}) {
     }
 
     handleUpdate(isSignedIn) {
-      this.setState({ isSignedIn });
+      this.setState({
+        isSignedIn,
+        auth: window.gapi.auth2.getAuthInstance(),
+        client: window.gapi.client,
+      });
     }
 
     render() {
