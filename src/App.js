@@ -6,9 +6,9 @@ import Spinner from './components/spinner';
     App will receive the gapi prop with the following keys:
     {
       isSignedIn: bool,
-      error: Error Object,
-      handleSignIn: gapi.auth2 function
-      handleSignOut: gapi.auth2 function
+      loading: bool,
+      error: Error Object || null,
+      auth: gapi.auth2 instance
     }
 */
 
