@@ -5,6 +5,12 @@ import Button from './components/button';
 import Spinner from './components/spinner';
 // dev
 import Log from './dev/log';
+// fontaweomse
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faUnlink } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faGoogle, faUnlink);
 
 /*
     App will receive the gapi props:
@@ -51,7 +57,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Navbar {...props} getSample={getSample} />
+      <Navbar {...props} />
       <main>
         <div className="jumbotron">
           <h2 className="display-4">Dashboard</h2>

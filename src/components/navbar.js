@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import Button from './button';
 import Spinner from './spinner';
 
@@ -12,16 +13,17 @@ const Navbar = ({ loading, isSignedIn, auth }) => {
       {loading ? <Spinner /> : (
         <div className="d-inline-flex align-items-center">
           <div className="mx-3">
-            <span>Google: </span>
-            <span className={`badge badge-${isSignedIn ? 'success' : 'light'}`}>
-              {isSignedIn ? 'LINKED' : 'UNLINKED'}
+            <span className={`badge badge-${isSignedIn ? 'success' : 'secondary'}`}>
+              {isSignedIn ? 'GOOGLE LINKED' : 'GOOGLE UNLINKED'}
             </span>
           </div>
           <Button
-            variant="primary"
+            variant={isSignedIn ? 'dark' : 'primary'}
+            outline={!isSignedIn}
             onClick={isSignedIn ? auth.signOut : auth.signIn}
+            title={(isSignedIn ? 'Unl' : 'L') + 'ink Google Account'}
           >
-            {isSignedIn ? 'Sign Out' : 'Login'}
+            <Icon icon={isSignedIn ? 'unlink' : ['fab', 'google']} />
           </Button>
         </div>
       )}
