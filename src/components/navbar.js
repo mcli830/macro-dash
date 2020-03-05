@@ -12,18 +12,25 @@ const Navbar = ({ loading, isSignedIn, auth }) => {
       </div>
       {loading ? <Spinner /> : (
         <div className="d-inline-flex align-items-center">
-          <div className="mx-3">
-            <span className={`badge badge-${isSignedIn ? 'success' : 'secondary'}`}>
-              {isSignedIn ? 'GOOGLE LINKED' : 'GOOGLE UNLINKED'}
-            </span>
-          </div>
+          <Button
+            variant="success"
+            outline
+            onClick={() => console.log('link g sheet')}
+          >
+            <Icon icon="table" />
+            <span className="ml-2">Link G-Sheet</span>
+          </Button>
+
+          <span className={`mx-3 badge badge-${isSignedIn ? 'success' : 'secondary'}`}>
+            <Icon icon={isSignedIn ? 'link' : 'unlink'} />
+          </span>
+
           <Button
             variant={isSignedIn ? 'dark' : 'primary'}
-            outline={!isSignedIn}
             onClick={isSignedIn ? auth.signOut : auth.signIn}
-            title={(isSignedIn ? 'Unl' : 'L') + 'ink Google Account'}
+            title={isSignedIn ? 'Sign Out' : 'Connect Google account'}
           >
-            <Icon icon={isSignedIn ? 'unlink' : ['fab', 'google']} />
+            <Icon icon={isSignedIn ? 'sign-out-alt' : ['fab', 'google']} />
           </Button>
         </div>
       )}

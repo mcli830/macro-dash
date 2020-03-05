@@ -8,9 +8,9 @@ import Log from './dev/log';
 // fontaweomse
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faUnlink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faUnlink, faSignOutAlt, faTable } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faGoogle, faUnlink);
+library.add(faGoogle, faLink, faUnlink, faSignOutAlt, faTable);
 
 /*
     App will receive the gapi props:
