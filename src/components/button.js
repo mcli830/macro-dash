@@ -2,13 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { colorVariants } from '../lib/bootstrap';
 
-const Button = ({ variant, outline, onClick, children, title }) => {
+const Button = ({ variant, outline, children, ...props}) => {
+
+  // extend class and style
+  const className = `btn btn${outline ? '-outline' : ''}-${variant} ${props.className || ''}`
+  const style = {
+    borderRadius: 0,
+    borderWidth: 2,
+    ...props.style,
+  }
+
   return (
     <button
-      className={`btn btn${outline ? '-outline' : ''}-${variant}`}
-      onClick={onClick}
-      style={{ borderRadius: 0, borderWidth: 2 }}
-      title={title}
+      {...props}
+      className={className}
+      style={style}
     >
       {children}
     </button>
@@ -18,9 +26,7 @@ const Button = ({ variant, outline, onClick, children, title }) => {
 Button.propTypes = {
   variant: PropTypes.oneOf(colorVariants),
   outline: PropTypes.bool,
-  onClick: PropTypes.func,
   children: PropTypes.node,
-  title: PropTypes.string,
 }
 
 Button.defaultProps = {
