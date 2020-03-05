@@ -1,6 +1,7 @@
 import React from 'react';
 import connectGoogleAPI from './api/connectGoogleAPI';
 import Navbar from './components/navbar';
+import Button from './components/button';
 import Spinner from './components/spinner';
 // dev
 import Log from './dev/log';
@@ -54,12 +55,13 @@ function App(props) {
       <main>
         <div className="jumbotron">
           <h2 className="display-4">Dashboard</h2>
-            <button
-              className="btn btn-outline-success"
+            <Button
+              variant="success"
+              outline
               onClick={getSample}
             >
               {state.fetching ? <Spinner /> : 'Get Sample Data'}
-            </button>
+            </Button>
           <hr className="my-4" />
           <Log name="App props" data={{
             loading: props.loading,

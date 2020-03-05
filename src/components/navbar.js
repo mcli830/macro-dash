@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from './button';
 import Spinner from './spinner';
 
 const Navbar = ({ loading, isSignedIn, auth }) => {
@@ -16,12 +17,12 @@ const Navbar = ({ loading, isSignedIn, auth }) => {
               {isSignedIn ? 'LINKED' : 'UNLINKED'}
             </span>
           </div>
-          <button
-            className={`btn btn-${isSignedIn ? 'outline-' : ''}primary`}
+          <Button
+            variant="primary"
             onClick={isSignedIn ? auth.signOut : auth.signIn}
           >
             {isSignedIn ? 'Sign Out' : 'Login'}
-          </button>
+          </Button>
         </div>
       )}
     </nav>
